@@ -12,7 +12,7 @@ export AWS_SECRET_ACCESS_KEY=<YOUR AWS SECRET ACCESS KEY>
 export AWS_DEFAULT_REGION=ap-northeast-1
 export LAMBDA_TASK_ROOT=.
 export CRAWLING_TARGET_URL=<CRAWLING_TARGET>
-export PYTHONDONTWRITEBYTECODE=1
+export UPLOAD_S3_BUCKET=<upload s3 bucketname>
 ```
 
 ### development env build and start.

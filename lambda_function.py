@@ -3,8 +3,11 @@ from selenium import webdriver
 import sys
 import re
 import os
+import boto3
+from datetime import datetime as dt
 
-def lambda_handler(event, context):
+
+def get_content(target_url):
     paths = "{}/phantomjs".format(os.getenv("LAMBDA_TASK_ROOT"))
 
     service_args = ['--ignore-ssl-errors=yes']
@@ -16,14 +19,43 @@ def lambda_handler(event, context):
         service_args=service_args,
         service_log_path=os.path.devnull        
     )
-
-    target_url = os.getenv("CRAWLING_TARGET_URL")
     print("target_url: {}".format(target_url))
     driver.get(target_url)
 
     data = driver.page_source.encode("utf-8")
     soup = BeautifulSoup(data, "lxml")
-    print("data: {}".format(data))
-    print("soup: {}".format(soup))
+    print(soup.title.string)
+    return soup.prettify()
 
-    driver.quit()
+
+def create_html_file(content):
+    tmp_dir = '/tmp/'
+
+    cur_ts = dt.now().strftime('%Y%m%d_%H%M%S')
+    file_path = tmp_dir + 'cur_ts.html'
+    with open(file_path, 'w') as file:
+        file.write(content)
+    return file_path
+
+
+def upload_text_s3bucket(upload_file_path, s3_bucket, key):
+    print("upload text. file_path:{}, upload_s3_bucket:{}, key:{}".format(upload_file_path, s3_bucket, key))
+    bucket = boto3.resource('s3').Bucket(s3_bucket)
+    bucket.upload_file(upload_file_path, key)
+
+
+def lambda_handler(event, context):
+
+    current_dt = dt.now().strftime('%Y%m%d%H%M%S')
+    upload_s3_bucket = os.getenv("UPLOAD_S3_BUCKET")
+    target_url = os.getenv("CRAWLING_TARGET_URL")
+    target_url_without_slash = target_url.replace("/", "_")
+
+    # get content
+    content = get_content(target_url)
+
+    # save
+    saved_file_path = create_html_file(content)
+
+    # upload
+    upload_text_s3bucket(saved_file_path, upload_s3_bucket, "crawling_result/{}/{}.html".format(target_url_without_slash, current_dt))
