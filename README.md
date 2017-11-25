@@ -7,10 +7,12 @@ It's a toilet analyze man.
 ### set aws env.
 
 ```
-export AWS_ACCESS_KEY_ID=XXXXXXXXXXXXX
-export AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXX
+export AWS_ACCESS_KEY_ID=<YOUR AWS ACCESS KEY>
+export AWS_SECRET_ACCESS_KEY=<YOUR AWS SECRET ACCESS KEY>
 export AWS_DEFAULT_REGION=ap-northeast-1
 export LAMBDA_TASK_ROOT=.
+export CRAWLING_TARGET_URL=<CRAWLING_TARGET>
+export PYTHONDONTWRITEBYTECODE=1
 ```
 
 ### development env build and start.

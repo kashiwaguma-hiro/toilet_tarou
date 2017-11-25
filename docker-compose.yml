@@ -10,3 +10,4 @@ services:
     - AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION        #using upload lambda zip for s3.
     - CRAWLING_TARGET_URL=$CRAWLING_TARGET_URL      #using crawling target url.
     - LAMBDA_TASK_ROOT=$LAMBDA_TASK_ROOT            #using local execute function.
+    - PYTHONDONTWRITEBYTECODE=1                     #no output pycache
