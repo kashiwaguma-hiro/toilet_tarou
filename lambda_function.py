@@ -32,7 +32,7 @@ def create_html_file(content):
     tmp_dir = '/tmp/'
 
     cur_ts = dt.now().strftime('%Y%m%d_%H%M%S')
-    file_path = tmp_dir + 'cur_ts.html'
+    file_path = tmp_dir + '{}.html'.replace(cur_ts)
     with open(file_path, 'w') as file:
         file.write(content)
     return file_path
