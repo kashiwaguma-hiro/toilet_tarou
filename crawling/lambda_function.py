@@ -29,10 +29,10 @@ def get_content(target_url):
 
 
 def create_html_file(content):
-    tmp_dir = '/tmp/'
+    tmp_dir = '/tmp'
 
     cur_ts = dt.now().strftime('%Y%m%d_%H%M%S')
-    file_path = tmp_dir + '{}.html'.replace(cur_ts)
+    file_path = "{}/{}.html".format(tmp_dir, cur_ts)
     with open(file_path, 'w') as file:
         file.write(content)
     return file_path

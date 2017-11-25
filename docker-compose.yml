@@ -8,6 +8,6 @@ services:
     - AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID          #using upload lambda zip for s3.
     - AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY  #using upload lambda zip for s3.
     - AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION        #using upload lambda zip for s3.
+    - UPLOAD_S3_BUCKET=$UPLOAD_S3_BUCKET            #using upload crawling resutl.
     - CRAWLING_TARGET_URL=$CRAWLING_TARGET_URL      #using crawling target url.
-    - UPLOAD_S3_BUCKET=$UPLOAD_S3_BUCKET            #using crawling result upload bucket.
     - LAMBDA_TASK_ROOT=$LAMBDA_TASK_ROOT            #using local execute function.
