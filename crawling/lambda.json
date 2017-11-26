@@ -1,6 +1,6 @@
 {
-  "name": "creawling",
-  "description": "",
+  "name": "get_##CRAWLING_FUNCTION_NAME##",
+  "description": "crawling for ##CRAWLING_FUNCTION_NAME##",
   "region": "ap-northeast-1",
   "handler": "lambda_function.lambda_handler",
   "runtime": "python3.6",

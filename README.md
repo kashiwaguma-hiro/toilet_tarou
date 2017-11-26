@@ -32,12 +32,11 @@ root@7d2f0fdc314d:/usr/src/app# cd LAMBDA_FUNCTION_NAME
 root@7d2f0fdc314d:/usr/src/app/LAMBDA_FUNCTION_NAME# python-lambda-local -f lambda_handler -t 300 lambda_function.py event.json
 ```
 
-## lambda deploy
+## crawling lambda deploy
 
 ```
 $ docker exec -it toilettarou_python_1 bash
-root@7d2f0fdc314d:/usr/src/app# cd LAMBDA_FUNCTION_NAME
-root@7d2f0fdc314d:/usr/src/app/LAMBDA_FUNCTION_NAME# lambda-uploader --variables "{\"CRAWLING_TARGET_URL\": \"$CRAWLING_TARGET_URL\", \"UPLOAD_S3_BUCKET\": \"$UPLOAD_S3_BUCKET\"}" --extra-file /usr/local/lib/python3.6/site-packages/ --extra-file ../phantomjs
+root@7d2f0fdc314d:/usr/src/app# sh lambda-upload-crawler.sh <crawling url>
 Î» Building Package
 Î» Uploading Package
 Î» Fin
