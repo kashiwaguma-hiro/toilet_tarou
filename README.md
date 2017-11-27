@@ -10,7 +10,7 @@ It's a toilet analyze man.
 export AWS_ACCESS_KEY_ID=<YOUR AWS ACCESS KEY>
 export AWS_SECRET_ACCESS_KEY=<YOUR AWS SECRET ACCESS KEY>
 export AWS_DEFAULT_REGION=ap-northeast-1
-export LAMBDA_TASK_ROOT=../
+export LAMBDA_TASK_ROOT=.
 export CRAWLING_TARGET_URL=<CRAWLING_TARGET>
 export UPLOAD_S3_BUCKET=toilet-man
 ```

@@ -15,4 +15,4 @@ echo $function_name
 sed -i.org -e "s%##CRAWLING_FUNCTION_NAME##%$function_name%g" $config_file
 
 # upload
-lambda-uploader --variables "{\"CRAWLING_TARGET_URL\": \"$crawling_target_url\", \"UPLOAD_S3_BUCKET\": \"$UPLOAD_S3_BUCKET\"}" --extra-file /usr/local/lib/python3.6/site-packages/ --extra-file ../phantomjs --config $config_file
+lambda-uploader --variables "{\"CRAWLING_TARGET_URL\": \"$crawling_target_url\", \"UPLOAD_S3_BUCKET\": \"$UPLOAD_S3_BUCKET\"}" --extra-file /usr/local/lib/python3.6/site-packages/ --config $config_file
