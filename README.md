@@ -27,16 +27,27 @@ $ docker-compose up -d
 ### lambda test (on development env)
 
 ```
-$ docker exec -it toilettarou_python_1 bash
+$ docker exec -it toilettarou_python_1 bashn
 root@7d2f0fdc314d:/usr/src/app# cd LAMBDA_FUNCTION_NAME
 root@7d2f0fdc314d:/usr/src/app/LAMBDA_FUNCTION_NAME# python-lambda-local -f lambda_handler -t 300 lambda_function.py event.json
 ```
 
-## crawling lambda deploy
+## deploy lambda(crawling)
 
 ```
 $ docker exec -it toilettarou_python_1 bash
 root@7d2f0fdc314d:/usr/src/app# sh lambda-upload-crawler.sh <crawling url>
+Î» Building Package
+Î» Uploading Package
+Î» Fin
+```
+
+## deploy lambda(parser)
+
+```
+$ docker exec -it toilettarou_python_1 bash
+root@7d2f0fdc314d:/usr/src/app# cd parser
+root@7d2f0fdc314d:/usr/src/app# lambda-uploader --config lambda.json  --extra-file /usr/local/lib/python3.6/site-packages/ 
 Î» Building Package
 Î» Uploading Package
 Î» Fin
